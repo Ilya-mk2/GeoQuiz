@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         goNextAct.setOnClickListener {
             val i = Intent(this, SecondActivity::class.java)
             startActivity(i)
-            finish()
         }
 
         trueButton.setOnClickListener {
