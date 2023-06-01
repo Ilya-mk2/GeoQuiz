@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools">
     <TextView
@@ -36,45 +37,46 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="115dp"
-        android:orientation="horizontal">
+        >
 
         <ImageButton
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/prew_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="2dp"
             android:contentDescription="@string/prev_button"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            android:src="@drawable/arrow_left" />
+            android:src="@drawable/arrow_left"
+            android:layout_marginStart="287dp"
+            />
 
         <ImageButton
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/next_button"
+            android:layout_marginRight="287dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="2dp"
             android:contentDescription="@string/next_button"
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:src="@drawable/arrow_right" />
 
-        <Button
-            android:id="@+id/goNextActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/goNextActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="530dp"
+        android:gravity="bottom|right"
+        android:layout_marginTop="50dp"
+        android:text="@string/go_nextAct">
 
-            android:layout_marginLeft="130dp"
-            android:gravity="bottom|right"
-            android:layout_marginTop="100dp"
-            android:text="@string/go_nextAct">
-
-        </Button>
-
-    </LinearLayout>
+    </Button>
 
 </LinearLayout>
