@@ -10,6 +10,9 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,21 +23,21 @@ class MainActivity : AppCompatActivity() {
     private lateinit var questionTextView: TextView
     private lateinit var goNextAct: Button
 
-    private val questionBank = listOf(
-        Question(R.string.question_australia, true),
-        Question(R.string.question_oceans, true),
-        Question(R.string.question_mideast, false),
-        Question(R.string.question_africa, false),
-        Question(R.string.question_americas, true),
-        Question(R.string.question_asia, true)
-    )
-
-    private var currentIndex = 0
+    private val quizViewModel: QuizViewModel by lazy{
+        ViewModelProviders.of(this).get(QuizViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        quizViewModel.currentIndex.observe(this,{index ->
+            Toast.makeText(this, index.toString(), Toast.LENGTH_LONG)
+
+            if (index == 0) {
+                prevButton.visibility = View.GONE
+            }
+        })
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
         nextButton = findViewById(R.id.next_button)
@@ -55,29 +58,27 @@ class MainActivity : AppCompatActivity() {
             checkAnswer(false)
         }
 
-        if (currentIndex == 0) {
-            prevButton.visibility = View.GONE
-        }
+
 
         nextButton.setOnClickListener {
             prevButton.visibility = View.VISIBLE
-            currentIndex++
-            if (currentIndex >= questionBank.size - 1) {
+            quizViewModel.moveToNext()
+          /*  if (quizViewModel.currentIndex >=quizViewModel.questionBank.size - 1) {
                 nextButton.visibility = View.GONE
                 updateQuestion()
             } else {
                 updateQuestion()
-            }
+            }*/
         }
         prevButton.setOnClickListener {
             nextButton.visibility = View.VISIBLE
-            currentIndex--
-            if (currentIndex == 0) {
+            quizViewModel.moveToPrev()
+           /* if (quizViewModel.currentIndex == 0) {
                 prevButton.visibility = View.GONE
                 updateQuestion()
             } else {
                 updateQuestion()
-            }
+            }*/
         }
         updateQuestion()
 
@@ -111,11 +112,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateQuestion() {
-        val questionTextId = questionBank[currentIndex].textResId
+        val questionTextId = quizViewModel.currentQuestionText
         questionTextView.setText(questionTextId)
     }
     private fun checkAnswer(userAnswer: Boolean) {
-        val correctAnswer = questionBank[currentIndex].answer
+        val correctAnswer = quizViewModel.currentQuestionAnswer
         val messageResId = if (userAnswer == correctAnswer) {
             R.string.correct_toast
         } else {
