@@ -2,31 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools">
     <TextView
         android:id="@+id/question_tview"
-        android:layout_gravity="center_horizontal"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:padding="24dp"
         tools:text="@string/question_australia"/>
 
     <LinearLayout
-        android:id="@+id/true_false_bottom"
         android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        >
+        android:orientation="horizontal"
+        android:layout_marginStart="220dp">
 
         <Button
             android:id="@+id/true_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/true_button"
-            android:layout_marginHorizontal="3dp"/>
+            android:layout_marginHorizontal="3dp"
+            android:layout_marginTop="2dp"/>
         <Button
             android:id="@+id/false_button"
             android:layout_width="wrap_content"
@@ -36,45 +35,52 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="115dp"
-        android:orientation="horizontal">
+        >
 
         <ImageButton
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/prew_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="2dp"
             android:contentDescription="@string/prev_button"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            android:src="@drawable/arrow_left" />
+            android:src="@drawable/arrow_left"
+            android:layout_marginStart="215dp"
+            />
 
         <ImageButton
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/next_button"
+            android:layout_marginRight="215dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="2dp"
             android:contentDescription="@string/next_button"
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:src="@drawable/arrow_right" />
 
-        <Button
-            android:id="@+id/goNextActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
 
-            android:layout_marginLeft="130dp"
-            android:gravity="bottom|right"
-            android:layout_marginTop="100dp"
-            android:text="@string/go_nextAct">
 
-        </Button>
+    </TextView>
+    <Button
+        android:layout_marginLeft="100dp"
+        android:id="@+id/goNextActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/go_nextAct">
 
-    </LinearLayout>
+    </Button>
 
 </LinearLayout>

@@ -38,40 +38,52 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        >
 
         <ImageButton
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/prew_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="2dp"
             android:contentDescription="@string/prev_button"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            android:src="@drawable/arrow_left" />
+            android:src="@drawable/arrow_left"
+            android:layout_marginStart="157dp"
+            />
 
         <ImageButton
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/next_button"
+            android:layout_marginRight="157dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="2dp"
             android:contentDescription="@string/next_button"
             android:minWidth="48dp"
             android:minHeight="48dp"
             android:src="@drawable/arrow_right" />
 
-        <Button
-            android:id="@+id/goNextActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:text="@string/go_nextAct">
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
 
-        </Button>
 
-    </LinearLayout>
+    </TextView>
+    <Button
+        android:layout_marginLeft="100dp"
+        android:id="@+id/goNextActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:text="@string/go_nextAct">
+
+    </Button>
 
 </LinearLayout>
