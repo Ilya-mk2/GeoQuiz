@@ -23,10 +23,13 @@ class QuizViewModel : ViewModel() {
     get() = questionBank[currentIndex.value!!].textResId
 
     fun moveToNext(){
-        currentIndex.postValue(currentIndex.value?.inc())
+        currentIndex.value= currentIndex.value?.inc()
+        Log.d("TAG", "move to next, currentIndex value is ${currentIndex.value}")
+        //currentIndex.postValue(currentIndex.value?.inc())
     }
     fun moveToPrev(){
-        currentIndex.postValue(currentIndex.value?.dec())
+        currentIndex.value= currentIndex.value?.dec()
+       // currentIndex.postValue(currentIndex.value?.dec())
     }
 
 }
