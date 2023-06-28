@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 
 class QuizViewModel : ViewModel() {
     private  val TAG = "QuizViewModel"
+     var isCheater =false
+
     var currentIndex = MutableLiveData<Int>(0)
     val questionBank = listOf(
         Question(R.string.question_australia, true),
